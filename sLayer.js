@@ -30,23 +30,23 @@
 function sLayer(snds,fn)
 {
     
-	this.s={};
-	this.sLoaded=0;	
-	this.callback=fn;
-	
-	// Check progress of loading event
-	this.checkProgress=function(obj,n){ if(++obj.sLoaded==n) obj.callback(obj); };
-   
+    this.s={};
+    this.sLoaded=0;	
+    this.callback=fn;
+
+    // Check progress of loading event
+    this.checkProgress=function(obj,n){ if(++obj.sLoaded==n) obj.callback(obj); };
+
     // Count the number of sounds.
     var n=0; for(var i in snds) n++;
     
     // Load the sounds
-	for(var i in snds)
-	{
+    for(var i in snds)
+    {
         this.s[i]={ channels:[], c:0 };
-		for(var j=snds[i].channels; j--;)
+        for(var j=snds[i].channels; j--;)
             this.s[i].channels.push(new Audio(snds[i].src));
-		
+        
         // Bind the play event for all the channels.
         this.s[i].play=function()
         {                                      
@@ -55,6 +55,6 @@ function sLayer(snds,fn)
             if(!this.c) this.c=this.channels.length-1;
             else this.c--;
         };
-		if(fn) this.s[i].channels[0].addEventListener("canplaythrough",this.checkProgress(this,n),false);        
-	}
+        if(fn) this.s[i].channels[0].addEventListener("canplaythrough",this.checkProgress(this,n),false);        
+    }
 }
