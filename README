@@ -1,0 +1,11 @@
+Contains libraries with boilerplate code so you can just add them in.
+Usually things like matrix manipulation or an alias to DOM stuff.
+
+gLayer.js
+Abstracted image-loader and canvas drawing context
+object with a callback feature after images are done loading.
+
+sLayer.js
+Much like gLayer but for HTML5 audio. You can specifiy the number
+of channels per sample for mixing.
+
